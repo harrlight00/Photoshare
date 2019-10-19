@@ -1,0 +1,33 @@
+<!doctype html>
+{% if useronly %}
+<a href='/{{tag}}/tag/All'>All photos</a>
+{% elif logged%}
+<a href='/{{tag}}/tag/User'>Only my photos</a>
+{% endif %}
+{% if photos %}
+<h2>Pictures associated with {{tag}}</h2>
+    <ul>
+    {% for photo in photos %}
+        <li><a href='/{{photo[2]}}/view'>{{photo[2]}}</a>
+		<span>: </span>
+		<a href='/{{photo[3]}}/photos'>{{photo[1]}}</a><br>
+		<img src='data:image/png;base64, {{photo[0]}}' height='100'/></li>
+    {% endfor %}
+    </ul>
+{% else %}
+<h2>No photos associated with {{tag}}</h2>
+{% endif %}
+
+<ul>
+<li><a href='/upload'>Upload a photo</a> </li>
+<li><a href='/profile'>Profile</a></li>
+<li><a href='/search'>Find users</a></li> 
+<li><a href='/findtag'>Find photos by tag</a></li> 
+<li><a href='/friend'>Add friend</a> </li>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+<li><a href='/top'>Top Users</a></li>
+<li><a href='/toptags'>Top Tags</a></li>
+<li><a href='/tagreccs'>Find Recommended Tags</a></li>
+<li><a href='/reccs'>Find Recommended Pictures</a></li>
+</ul>

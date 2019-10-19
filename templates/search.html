@@ -1,0 +1,45 @@
+<!-- author Charles Harr charr@bu.edu -->
+<head>
+    <title>Search for friends!</title>
+</head>
+{% if message %}
+<h1>{{message}}!</h1>
+{% endif %}
+    <body>
+		{% if friend %}
+		<div class="title">
+            <h1>Enter friend's email below</h1>
+        </div>
+        <div id="content">
+            <form method="post" action="{{ url_for('friend_user') }}">
+                <label for="email">Enter email:</label>
+                <input type="email" name="email" /><br />
+                <input type="submit" />
+            </form>
+         </div>
+		{% else %}
+		<div class="title">
+            <h1>Enter user's email below</h1>
+        </div>
+		<div id="content">
+            <form method="post" action="{{ url_for('search_user') }}">
+                <label for="email">Enter email:</label>
+                <input type="email" name="email" /><br />
+                <input type="submit" />
+            </form>
+         </div> 
+		{% endif %}
+    </body>
+<ul>
+<li><a href='/upload'>Upload a photo</a> </li>
+<li><a href='/profile'>Profile</a></li>
+<li><a href='/search'>Find users</a></li> 
+<li><a href='/findtag'>Find photos by tag</a></li> 
+<li><a href='/friend'>Add friend</a> </li>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+<li><a href='/top'>Top Users</a></li>
+<li><a href='/toptags'>Top Tags</a></li>
+<li><a href='/tagreccs'>Find Recommended Tags</a></li>
+<li><a href='/reccs'>Find Recommended Pictures</a></li>
+</ul>

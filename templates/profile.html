@@ -1,0 +1,72 @@
+<!-- author Charles Harr(charr@bu.edu) -->
+<!doctype html>
+<title>Photoshare</title>
+{% if message %}
+<p>{{message}}</p>
+{% endif %}
+{% if current %}
+<h1>Hello {{ name }}!</h1>
+{% endif %}
+<br>
+{% if profilepic %}
+<img src='data:image/png;base64, {{profilepic}}' height='100'/></li>
+{% else %}
+<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg' height='100' width='100'/></li>
+{% endif %}
+<p>Email: {{ email }}</p>
+<p>First Name: {{ name }}</p>
+<p>Last Name: {{ lastname }}</p>
+<p>Birthday: {{ birthday }}</p>
+
+{% if hometown %}
+<p>Hometown: {{ hometown }}</p>
+{% endif %}
+{% if gender %}
+<p>Gender: {{ gender }}</p>
+{% endif %}
+{% if bio %}
+<p>Bio: {{ bio }}</p>
+{% endif %}
+
+<h2>Photos</h2>
+	{% for album in photos %}
+		<h3>{{album[0]}}</h3>
+		{% if current %}
+		<a href='/{{album[2]}}/deletealbum'>Delete</a><br>
+		{% endif %}
+		<ul>
+		{% for photo in album[1] %}
+			<li><a href='/{{photo[1]}}/photos'>{{photo[2]}}</a></li>
+			{% if current %}
+			<a href='/{{photo[1]}}/deletepic'>Delete</a><br>
+			{% endif %}
+			<img src='data:image/png;base64, {{photo[0]}}' height='100'/></li>
+		{% endfor %}
+		</ul>
+	{% endfor %}
+
+<h2>Friends</h2>
+    <ul>
+    {% for friend in friends %}
+		<li><a href='/{{friend}}/view'>{{friend}}</a></li>
+    {% endfor %}
+    </ul>
+
+<ul>
+<li><a href='/upload'>Upload a photo</a> </li>
+{% if current %}
+<li><a href='/profpic'>Edit Profile</a></li>
+{% else %}
+<li><a href='/profile'>Profile</a></li>
+{% endif %}
+<li><a href='/search'>Find users</a></li> 
+<li><a href='/findtag'>Find photos by tag</a></li> 
+<li><a href='/friend'>Add friend</a> </li>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+<li><a href='/top'>Top Users</a></li>
+<li><a href='/toptags'>Top Tags</a></li>
+<li><a href='/tagreccs'>Find Recommended Tags</a></li>
+<li><a href='/reccs'>Find Recommended Pictures</a></li>
+</ul>
+

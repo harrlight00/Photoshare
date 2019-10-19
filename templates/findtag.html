@@ -1,0 +1,47 @@
+<!-- author Charles Harr charr@bu.edu -->
+<head>
+    <title>Search for tags!</title>
+</head>
+{% if message %}
+<h1>{{message}}!</h1>
+{% endif %}
+{% if recc %}
+    <body>
+		<div class="title">
+            <h1>Enter tag(s) below separated by spaces</h1>
+        </div>
+        <div id="content">
+            <form method="post" action="{{ url_for('tag_reccs') }}">
+                <label for="text">Enter tags:</label>
+                <input type="text" name="taglist" required="True"/><br />
+                <input type="submit" />
+            </form>
+         </div>
+    </body>
+{% else %}
+    <body>
+		<div class="title">
+            <h1>Enter tag(s) below separated by spaces</h1>
+        </div>
+        <div id="content">
+            <form method="post" action="{{ url_for('find_tag') }}">
+                <label for="text">Enter tags:</label>
+                <input type="text" name="taglist" required="True"/><br />
+                <input type="submit" />
+            </form>
+         </div>
+    </body>
+{% endif %}
+<ul>
+<li><a href='/upload'>Upload a photo</a> </li>
+<li><a href='/profile'>Profile</a></li>
+<li><a href='/search'>Find users</a></li> 
+<li><a href='/findtag'>Find photos by tag</a></li> 
+<li><a href='/friend'>Add friend</a> </li>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+<li><a href='/top'>Top Users</a></li>
+<li><a href='/toptags'>Top Tags</a></li>
+<li><a href='/tagreccs'>Find Recommended Tags</a></li>
+<li><a href='/reccs'>Find Recommended Pictures</a></li>
+</ul>

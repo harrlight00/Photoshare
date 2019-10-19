@@ -1,0 +1,43 @@
+<!doctype html>
+{% if users %}
+<h2>Top Users</h2>
+    <ul>
+	<p>User: Score</p>
+    {% for user in top %}
+        <li><a href='/{{user[0]}}/view'>{{user[0]}}</a>
+		<span>: {{user[1]}}</span></li>
+    {% endfor %}
+    </ul>
+{% elif	recc %}
+<h2>Recommended Tags</h2>
+    <ul>
+	<p>Tag:</p>
+    {% for tag in top %}
+        <li><a href='/{{tag}}/tag/All'>{{tag}}</a>
+    {% endfor %}
+    </ul>
+{% else %}
+<h2>Top Tags</h2>
+    <ul>
+	<p>Tag: Amount</p>
+    {% for tag in top %}
+        <li><a href='/{{tag[0]}}/tag/All'>{{tag[0]}}</a>
+		<span>: {{tag[1]}}</span></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<ul>
+<li><a href='/upload'>Upload a photo</a> </li>
+<li><a href='/profile'>Profile</a></li>
+<li><a href='/search'>Find users</a></li> 
+<li><a href='/findtag'>Find photos by tag</a></li> 
+<li><a href='/friend'>Add friend</a> </li>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+<li><a href='/top'>Top Users</a></li>
+<li><a href='/toptags'>Top Tags</a></li>
+<li><a href='/tagreccs'>Find Recommended Tags</a></li>
+<li><a href='/reccs'>Find Recommended Pictures</a></li>
+</ul>
+
